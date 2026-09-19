@@ -1,0 +1,176 @@
+{
+  "Table S1": [
+    [
+      "Component / cycles",
+      "Released file(s)",
+      "Variables used",
+      "Analytical purpose"
+    ],
+    [
+      "Demographics; all four cycles",
+      "DEMO_C.XPT, DEMO_D.XPT, DEMO_G.XPT, DEMO_H.XPT",
+      "SEQN; RIDSTATR; RIDAGEYR; RIAGENDR; RIDRETH1; DMDEDUC2; INDFMPIR; WTMEC2YR; SDMVSTRA; SDMVPSU",
+      "Eligibility, covariates and survey design"
+    ],
+    [
+      "Body measures; all four cycles",
+      "BMX_C.XPT, BMX_D.XPT, BMX_G.XPT, BMX_H.XPT",
+      "SEQN; BMXBMI",
+      "BMI sensitivity adjustment and historical age-domain completeness"
+    ],
+    [
+      "Diabetes; all four cycles",
+      "DIQ_C.XPT, DIQ_D.XPT, DIQ_G.XPT, DIQ_H.XPT",
+      "SEQN; DIQ010",
+      "Diagnosed diabetes and disease-composite completeness"
+    ],
+    [
+      "Medical conditions; all four cycles",
+      "MCQ_C.XPT, MCQ_D.XPT, MCQ_G.XPT, MCQ_H.XPT",
+      "SEQN; MCQ160B, MCQ160C, MCQ160D, MCQ160E, MCQ160F; MCQ220",
+      "Cardiovascular disease and cancer"
+    ],
+    [
+      "Smoking; all four cycles",
+      "SMQ_C.XPT, SMQ_D.XPT, SMQ_G.XPT, SMQ_H.XPT",
+      "SEQN; SMQ020; SMQ040",
+      "Never, former and current smoking"
+    ],
+    [
+      "Physical activity questionnaire; 2003–2006",
+      "PAQ_C.XPT; PAQ_D.XPT",
+      "SEQN; PAD020; PAQ050Q; PAQ050U; PAD080; PAQ100; PAD120; PAD160; PAD320; PAD200",
+      "Transport, home/yard and leisure gates; Table S4"
+    ],
+    [
+      "Individual leisure activities; 2003–2006",
+      "PAQIAF_C.XPT; PAQIAF_D.XPT",
+      "SEQN; PADLEVEL; PADTIMES; PADDURAT",
+      "Sum activity rows within intensity domain; Table S4"
+    ],
+    [
+      "Physical activity questionnaire; 2011–2014",
+      "PAQ_G.XPT; PAQ_H.XPT",
+      "SEQN; PAQ605/610; PAD615; PAQ620/625; PAD630; PAQ635/640; PAD645; PAQ650/655; PAD660; PAQ665/670; PAD675",
+      "Five typical-week activity domains; Table S4"
+    ],
+    [
+      "Hip accelerometry; 2003–2006",
+      "PAXRAW_C.XPT; PAXRAW_D.XPT (downloaded as ZIP archives)",
+      "SEQN; PAXN; PAXDAY; PAXHOUR; PAXMINUT; PAXSTAT; PAXCAL; PAXINTEN; PAXSTEP (2005–2006 only)",
+      "Minute-level quality checks and counts per wear minute; steps are ancillary, not the principal movement score"
+    ],
+    [
+      "Wrist day summaries; 2011–2014",
+      "PAXDAY_G.XPT; PAXDAY_H.XPT",
+      "SEQN; PAXDAYD; PAXWWMD; PAXVMD; PAXMTSD",
+      "Valid days and mean daily MIMS; Table S5"
+    ],
+    [
+      "Linked mortality; all four cycles",
+      "NHANES_2003_2004_MORT_2019_PUBLIC.dat; NHANES_2005_2006_MORT_2019_PUBLIC.dat; NHANES_2011_2012_MORT_2019_PUBLIC.dat; NHANES_2013_2014_MORT_2019_PUBLIC.dat",
+      "SEQN; ELIGSTAT; MORTSTAT; PERMTH_EXM",
+      "Linkage eligibility, all-cause mortality, examination-based follow-up"
+    ]
+  ],
+  "Table S4": [
+    [
+      "Component",
+      "Period",
+      "Items, valid ranges and contribution to final daily score",
+      "Rule for negative or incomplete response"
+    ],
+    [
+      "Transport",
+      "2003-2006",
+      "PAD020=1 requires PAQ050Q=1–100, PAQ050U=1/2/3 and PAD080=10–600 min. Contribution: PAQ050Q × k × PAD080 / 30, where k=30, 30/7 or 1 for day, week or month.",
+      "Negative domain: zero qualifying minutes. Positive with invalid required details: missing."
+    ],
+    [
+      "Home or yard",
+      "2003-2006",
+      "PAQ100=1 requires PAD120=1–120 and PAD160=10–600 min. Contribution: PAD120 × PAD160 / 30.",
+      "Same domain rule"
+    ],
+    [
+      "Moderate leisure",
+      "2003-2006",
+      "PAD320=1 requires ≥1 PAQIAF row with PADLEVEL=1; every row must have PADTIMES=1–300 and PADDURAT=10–600 min. Contribution: sum(PADTIMES × PADDURAT) / 30.",
+      "Same domain rule; multiple activity rows per person are expected"
+    ],
+    [
+      "Vigorous leisure",
+      "2003-2006",
+      "PAD200=1 requires ≥1 PAQIAF row with PADLEVEL=2; every row must have PADTIMES=1–300 and PADDURAT=10–600 min. Contribution: 2 × sum(PADTIMES × PADDURAT) / 30.",
+      "Same domain rule"
+    ],
+    [
+      "Work, transport and recreation",
+      "2011-2014",
+      "Gate / days / minutes: vigorous work PAQ605/PAQ610/PAD615; moderate work PAQ620/PAQ625/PAD630; transport PAQ635/PAQ640/PAD645; vigorous recreation PAQ650/PAQ655/PAD660; moderate recreation PAQ665/PAQ670/PAD675. Gate=1 requires days=1–7 and minutes=10–1440. Each contribution is days × minutes × intensity weight / 7; weight=2 for vigorous domains and 1 otherwise.",
+      "Negative domain: zero qualifying minutes. Positive with invalid required details: missing."
+    ]
+  ],
+  "Table S5": [
+    [
+      "Feature",
+      "Hip period 2003–2006",
+      "Wrist period 2011–2014"
+    ],
+    [
+      "Device and placement",
+      "ActiGraph AM-7164; one axis; right hip",
+      "ActiGraph GT3X+; three axes; non-dominant wrist"
+    ],
+    [
+      "Requested wear",
+      "Seven days; waking hours; remove for water activities and bedtime",
+      "Seven days; continuous daily wear"
+    ],
+    [
+      "Source level",
+      "PAXRAW_C/D, one-minute records",
+      "PAXDAY_G/H, released day summaries"
+    ],
+    [
+      "Quality / wear",
+      "PAXSTAT=1; PAXCAL=1; finite 0≤PAXINTEN<32767. Wear is valid time outside the exact nonwear rule in Section S5.1.",
+      "Released wake-wear minutes PAXWWMD; quality-valid minutes PAXVMD; total triaxial daily MIMS PAXMTSD."
+    ],
+    [
+      "Valid day and participant",
+      "≥600 wear minutes/day; ≥4 valid days",
+      "PAXWWMD≥600, PAXVMD>0, PAXMTSD≥0; ≥4 valid days"
+    ],
+    [
+      "Movement metric",
+      "Sum of counts / sum of wear minutes across valid days",
+      "Sum of PAXMTSD / number of valid days; not a wake-only total"
+    ],
+    [
+      "Before ranking",
+      "Natural log(1 + counts per wear minute)",
+      "Natural log(1 + mean total daily MIMS)"
+    ],
+    [
+      "Valid-day sensitivities",
+      "≥3 or ≥5 valid days",
+      "≥1 valid day"
+    ],
+    [
+      "Processing sensitivities",
+      "90-minute nonwear threshold; calibration codes 1 or 2",
+      "MIMS per valid minute: sum(PAXMTSD)/sum(PAXVMD) over valid days"
+    ],
+    [
+      "Score reconstruction",
+      "Each alternative defines its corresponding paired reference sample and reconstructs both rank-based components",
+      "Each alternative defines its corresponding paired reference sample and reconstructs both rank-based components"
+    ],
+    [
+      "Documentation",
+      "NHANES PAXRAW_C and PAXRAW_D codebooks",
+      "NHANES PAXDAY_G and PAXDAY_H codebooks (NCHS, 2013b, 2015b)"
+    ]
+  ]
+}

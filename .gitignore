@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.venv/
+.Rhistory
+.RData
+.DS_Store
+/data/
+/work/
+/outputs/
+*.rds
+*.RData
+*.xpt
+*.XPT
+*.dat
