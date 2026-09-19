@@ -116,7 +116,7 @@ model objects, manuscript comments, local caches and Git history.
 
 ## AI assistance and author responsibility
 
-GPT-6 Astra (OpenAI), a large language model accessed through Codex, assisted with code development, debugging, formatting, explanatory code comments, and reproducibility checks, as well as the preparation and language editing of README files, execution instructions, and other repository documentation. Automated tests and comparisons against the reported results support computational reproducibility; they do not establish the validity of all methodological assumptions. Final manual review of the AI-assisted code, documentation, and outputs by the authors remains pending before public release and manuscript submission. The authors retain responsibility for the analytical decisions and the released code.
+GPT-6 Astra (OpenAI), a large language model accessed through Codex, assisted with code development, debugging, formatting, explanatory code comments, and reproducibility checks, as well as the preparation and language editing of README files, execution instructions, and other repository documentation. Automated tests and comparisons against the reported results support computational reproducibility; they do not establish the validity of all methodological assumptions. The authors retain responsibility for the analytical decisions and the released code.
 
 ## Interpretation and publication
 
