@@ -88,8 +88,8 @@ to [0.0001,0.9999]. The difference and average of the two normal scores are each
 centered and divided by their weighted population standard deviation. These
 are `Delta` (signed contrast) and `Level` (common activity component).
 
-Positive contrast means a relatively higher self-report rank than device rank
-within the reference cycle. It does not demonstrate misreporting, absolute
+Higher contrast values indicate a shift toward a higher self-report rank relative
+to device rank within the reference cycle. It does not demonstrate misreporting, absolute
 measurement error or that either instrument is a criterion standard. After
 centering, equal ranks need not correspond to contrast zero. The mean/difference
 construction does not guarantee independence after selection or adjustment.
@@ -117,7 +117,7 @@ Survey-weighted Cox models use Efron ties, examination as time origin, the
 contrast, common activity component and core covariates. Pooled fits stratify
 baseline hazards by cycle. Sex-specific slopes are obtained from the interaction
 model using named linear contrasts and their full covariance, not by adding
-standard errors. The preferred direct wrist-to-hip slope ratio permits nuisance
+standard errors. The preferred direct wrist-to-hip ratio of hazard ratios permits nuisance
 slopes to differ by measurement period. It is a ratio of contrast hazard ratios,
 not a participant mortality hazard ratio or a causal instrument effect.
 
@@ -210,3 +210,9 @@ Table S36 compares a contrast-only model, a contrast-plus-average model and the 
 A separate counting-process model splits follow-up at five years and adds only a contrast-by-late-time interaction to each original adjustment set. Deaths at exactly five years belong to the early interval. The horizon follows the existing diagnostic horizon, not the new results. The full survey base is retained before domain subsetting; excluded records receive arbitrary positive times solely to retain survey information and never enter model risk sets. Without the interaction, split fits must reproduce both coefficients and survey covariance within 1e-8, with identical events, person-time and design degrees of freedom. Early HRs, late HRs and late/early ratios use full design-df t inference; the late HR variance includes the coefficient covariance.
 
 These focused step tests retain constant nuisance slopes and cannot exclude other forms of time variation. Conventional diagnostics flag contrast nonproportionality in the 2005–2006 and pooled hip unadjusted/average-component models. No five-year step test has p<0.05 (minimum 0.0616). This does not overturn the conventional signals. S36 remains a descriptive comparison of distinct associations, not a mediation analysis. All diagnostics are exploratory and unadjusted for multiplicity.
+
+## Terminology and source documentation
+
+Publication tables label exponentiated coefficient differences as ratios of hazard ratios (HR ratios). Legacy strings such as `Female/Male slope ratio` and `Wrist/Hip slope ratio` remain internal CSV lookup keys for reproducibility; they never denote a quotient of log-hazard coefficients. Exporters translate these keys to the publication labels without changing values. The NCHS PAXDAY_G and PAXDAY_H codebooks were first published in November 2020; 2011–2012 and 2013–2014 identify the survey cycles.
+
+Rank transformations define relative scales; they do not by themselves establish measurement equivalence, improve every aspect of robustness, or add information beyond the paired activity measures. The measurements were paired at baseline but did not cover identical observation periods. Between-period comparisons combine changes in instruments, processing, population and follow-up, and cannot identify a single cause of the observed difference.

@@ -54,7 +54,7 @@ def build_tables(work):
             group = original.model.split('__')[0]
             group = '2003–2006 pooled' if group == 'hip' else group
             size = f'{original.n:,} / {original.deaths:,}' if name == 'mortality' else f'{original.n:,}'
-            rows.append([group, original.contrast, size, interval(original), pvalue(original.p),
+            rows.append([group, original.contrast.replace('slope ratio', 'HR ratio'), size, interval(original), pvalue(original.p),
                          interval(other), pvalue(other.p)])
         tables[label] = rows
     return tables

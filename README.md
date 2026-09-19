@@ -81,7 +81,7 @@ The explicit execution order is:
 3. `prepare-models`: prepare common model inputs and descriptive summaries.
 4. `fit-models`: refit response weights, balance, main/secondary/exploratory models and diagnostics.
 5. `export-displays`: generate the original 37 tables and figures.
-6. `reporting`: export domain-specific completeness, follow-up, cutpoints and same-case adjustment models, then generate Tables S32–S36.
+6. `reporting`: export domain-specific completeness, follow-up, cutpoints and same-case adjustment models, then generate Tables S32–S37, including the time-dependence diagnostics.
 
 For an intentional stage-by-stage run, replace `all` with the relevant stage
 and reuse that run's work directory in the order above. Do not repeat stages
@@ -96,7 +96,7 @@ Numerical models and descriptive exports are in `work/models/`, response
 fits and balance in `work/response/`, exploratory results in `work/exploratory/`,
 and final table/figure presentations in `work/displays/`. The latter includes
 `main_tables.json`, `supplement_tables.json`, `no_transport_tables.json`,
-`reporting_tables.json` and six PNGs. New reporting CSVs and fitted objects are in
+`reporting_tables.json`, `reporting_diagnostic_tables.json` and six figure PNGs. New reporting CSVs and fitted objects are in
 `work/reporting/`; never publish the fitted RDS objects.
 
 The 34 source files total about 1.01 GB. A completed reference working directory

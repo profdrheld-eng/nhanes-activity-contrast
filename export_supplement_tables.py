@@ -27,6 +27,8 @@ def presentation_label(value):
     value = re.sub(r'\b(?:men|male)\b', 'Male', value, flags=re.I)
     value = value.replace('High school or GED', 'High school or equivalent')
     value = value.replace('bmi extension', 'BMI extension')
+    value = re.sub(r'\bslope ratio\b', 'HR ratio', value, flags=re.I)
+    value = value.replace('Female-to-Male ratio', 'Female-to-Male HR ratio')
     return value
 
 def variable(v, cycle=None):

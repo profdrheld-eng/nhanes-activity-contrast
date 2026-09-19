@@ -38,13 +38,13 @@ def tables(work):
     row=regime('Inf')
     t2=[['Panel A. Period- and cycle-specific associations']]+t2+[
         ['Panel B. Direct measurement-regime comparison'],
-        ['Comparison','n / deaths','Slope ratio','95% CI','p','df'],
+        ['Comparison','n / deaths','HR ratio','95% CI','p','df'],
         ['Wrist versus hip',f'{int(row.n):,} / {int(row.deaths):,}',f'{row.estimate:.3f}',
          f'{row.ci_low:.3f}-{row.ci_high:.3f}',p(row),str(int(row.design_df))]]
     row=regime('5')
     t3=[['Panel A. Period-specific sensitivity analyses']]+t3+[
         ['Panel B. Direct measurement-regime sensitivity comparison'],
-        ['Sensitivity analysis','Comparison','n / deaths','Slope ratio [95% CI]','p'],
+        ['Sensitivity analysis','Comparison','n / deaths','HR ratio [95% CI]','p'],
         ['Follow-up censored at 5 years','Wrist versus hip',f'{int(row.n):,} / {int(row.deaths):,}',val(row),p(row)]]
     return {'Table 2':t2,'Table 3':t3,'Table 4':t4}
 
