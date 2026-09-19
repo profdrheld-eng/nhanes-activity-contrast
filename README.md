@@ -9,7 +9,7 @@ sources and are not included in this package.
 
 The pipeline reconstructs four cycle cohorts from 34 public input files,
 fits the main and sensitivity models, refits response weights, exports
-response-balance and other diagnostics, and generates 42 tables and 6 figures, including the post-hoc reporting additions (S32–S36). It also exports the diagnostic source values for Table S37; these are assembled into the supplementary table separately.
+response-balance and other diagnostics, and generates 43 tables and 6 figures, including the post-hoc reporting additions (S32–S37). Table S37 is assembled automatically from the diagnostic CSV outputs.
 It does not read historical coefficients or the Word manuscripts as inputs.
 
 - [DATA_SOURCES.md](DATA_SOURCES.md): exact official inputs and folder layout.
@@ -137,6 +137,6 @@ outputs, and checks that its principal refits match those results. The added sta
 was tested separately on a byte-identical copy of the validated model input; the
 minute-level pipeline was not rerun for this reporting-only extension.
 
-The `reporting` stage also runs `R/run_reporting_diagnostics.R` after the S32–S36 exports. It writes Table S37 source values to `reporting_diagnostics/schoenfeld.csv`, `step_time.csv` and `support.csv`, together with 18 local diagnostic plots. To add diagnostics to an existing completed reporting run, use `Rscript R/run_reporting_diagnostics.R /path/to/work`. The output directory must not already exist; a completion marker is written only after all 18 models pass numerical checks. These diagnostics do not replace the original models or establish proportionality.
+The `reporting` stage also runs `R/run_reporting_diagnostics.R` after the S32–S36 exports. It writes Table S37 source values to `reporting_diagnostics/schoenfeld.csv`, `step_time.csv` and `support.csv`, together with 18 local diagnostic plots. To add diagnostics to an existing completed reporting run, use `Rscript R/run_reporting_diagnostics.R /path/to/work`. The output directory must not already exist; a completion marker is written only after all 18 models pass numerical checks. After successful diagnostics, `export_reporting_diagnostics.py` automatically writes `displays/table_s37.csv`, `reporting_diagnostic_tables.json` and `reporting_diagnostic_table_notes.json`. For an existing completed diagnostic run, use `python export_reporting_diagnostics.py --work-dir /path/to/work`; existing S37 exports are never overwritten. No Word file or local audit folder is required. These diagnostics do not replace the original models or establish proportionality.
 
 Run the boundary/event/person-time regression check with `Rscript tests/test_reporting_time_split.R` in the same R environment.

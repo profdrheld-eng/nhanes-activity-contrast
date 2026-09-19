@@ -94,6 +94,7 @@ def main():
         subprocess.run([rscript,str(root/'R/run_reporting.R'),str(work)],check=True)
         subprocess.run([sys.executable,str(root/'export_reporting.py'),'--work-dir',str(work)],check=True)
         subprocess.run([rscript,str(root/'R/run_reporting_diagnostics.R'),str(work)],check=True)
+        subprocess.run([sys.executable,str(root/'export_reporting_diagnostics.py'),'--work-dir',str(work)],check=True)
         return
     if args.stage=='build-cohort':
         from nhanes_activity.cohorts import CYCLES, write_cycle

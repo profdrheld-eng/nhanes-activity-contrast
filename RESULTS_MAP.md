@@ -1,6 +1,6 @@
 # Result-to-code map
 
-The original 43 display components (37 tables and 6 figures) are listed first. Subsequent sections map S32–S36 and the diagnostic source values for S37. Reporting checklists S38–S39 are in the journal Supplementary File; they are not computational outputs.
+The original 43 display components (37 tables and 6 figures) are listed first. Subsequent sections map S32–S37. Reporting checklists S38–S39 are in the journal Supplementary File; they are not computational outputs.
 The existing supplement numbering is retained; there is no additional S16
 or unsuffixed S24 to generate. Each named numerical CSV below is under
 `work/models/` unless another folder is shown. Display files go to `work/displays/`.
@@ -96,4 +96,4 @@ participant-level verification file and must never be published.
 - S36: `R/run_reporting.R`, reporting/mortality_adjustment.csv and mortality_support.csv. Six samples, three adjustment levels; 18 fits with principal-result parity checks.
 - All five formatted tables and notes: `export_reporting.py`, displays/reporting_tables.json and reporting_table_notes.json.
 
-| Table S37 | `R/run_reporting_diagnostics.R` | `reporting_diagnostics/{schoenfeld,step_time,support}.csv` | all 18 S36 models; conventional and full-survey tests kept distinct |
+| Table S37 | `R/run_reporting_diagnostics.R` + `export_reporting_diagnostics.py` | `displays/table_s37.csv`, `reporting_diagnostic_tables.json`; source: `reporting_diagnostics/{schoenfeld,step_time,support}.csv` | all 18 S36 models; conventional and full-survey tests kept distinct |

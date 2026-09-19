@@ -1,6 +1,6 @@
 # Validation scope and evidence
 
-Release preparation date: 2026-09-18. The second critical review corrected a density-coordinate error and added the author-approved post-hoc transport sensitivity. Historical clean-Python raw replay and model/export integration passed, but reproduction alone did not detect the Figure 1 coordinate error described below. This is an internal reproducibility audit,
+Release preparation date: 2026-09-18. The second critical review corrected a density-coordinate error and added the author-approved post-hoc transport sensitivity. Historical clean-Python raw replay and model/export integration passed, but reproduction alone did not detect the Figure 1 coordinate error described below. All reconstruction and cross-checks described below were performed within the study project; they do not constitute external validation. This is an internal reproducibility audit,
 not external peer review or a guarantee of statistical correctness.
 
 ## Input and processing checks
@@ -83,7 +83,7 @@ before the correction and passes afterward; a permuted-covariance test confirms
 unchanged valid inference. A second complete model/display replay reproduces
 all 95 compared CSV, JSON and PNG files exactly after this guard was added.
 
-## Independent and adversarial checks
+## Internal cross-checks and adversarial tests
 
 36 Python tests cover weighted tied ranks, normalization and invalid inputs;
 questionnaire gates, frequencies and missingness; nonwear/day boundaries,
@@ -172,3 +172,9 @@ Eighteen survey Cox fits were estimated on unchanged principal complete cases. E
 ## S36 time-dependence diagnostics (19 September 2026)
 
 All 18 weighted Cox refits reproduced S36 coefficients within 1e-8. Counting-process refits without time interactions also reproduced coefficients and full survey covariance within 1e-8, preserving original membership, deaths, person-time and design degrees of freedom. Focused five-year interaction fits all converged with finite estimates/covariance. The synthetic R regression check covers deaths exactly at five years, late deaths, censoring, person-time conservation and excluded records with missing follow-up. Full raw-minute processing was not rerun for this diagnostic addition. Diagnostic findings and inferential limitations are described in METHODS.md.
+
+## Portable S37 table export
+
+On 2026-09-19, `export_reporting_diagnostics.py` was added after the diagnostic R stage. It formats all 18 models without refitting them and requires the diagnostic completion marker, complete model/contrast coverage, unique keys, finite valid probabilities and HR intervals, and matching sample support. Existing exports are protected against overwrite. Its CSV and JSON match all 95 cells of the current supplementary table, including the 72 result cells. The accompanying notes distinguish conventional Schoenfeld tests from survey-based step-time inference.
+
+All 45 Python unit tests passed in the documented Python 3.9.6 project environment, including four new S37 tests. A supplementary run under Python 3.12 passed the S37 tests but exposed two existing mock-resolution errors in `test_environment.py`; this does not establish Python 3.12 compatibility. The R diagnostic calculations and fitted models were unchanged and were not rerun for this formatting addition.
