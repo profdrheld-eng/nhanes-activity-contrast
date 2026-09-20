@@ -9,7 +9,7 @@ sources and are not included in this package.
 
 The pipeline reconstructs four cycle cohorts from 34 public input files,
 fits the main and sensitivity models, refits response weights, exports
-response-balance and other diagnostics, and generates 43 tables and 6 figures, including the post-hoc reporting additions (S32–S37). Table S37 is assembled automatically from the diagnostic CSV outputs.
+response-balance and other diagnostics, and generates 44 tables and 6 figures, including the post-hoc reporting additions (S32–S37) and the exploratory age comparison (S40). Table S37 is assembled automatically from the diagnostic CSV outputs.
 It does not read historical coefficients or the Word manuscripts as inputs.
 
 - [DATA_SOURCES.md](DATA_SOURCES.md): exact official inputs and folder layout.
@@ -83,6 +83,8 @@ The explicit execution order is:
 5. `export-displays`: generate the original 37 tables and figures.
 6. `reporting`: export domain-specific completeness, follow-up, cutpoints and same-case adjustment models, then generate Tables S32–S37, including the time-dependence diagnostics.
 
+7. `age-comparison`: refit three additional exploratory age-by-period models and export both panels of Table S40.
+
 For an intentional stage-by-stage run, replace `all` with the relevant stage
 and reuse that run's work directory in the order above. Do not repeat stages
 whose outputs already exist or mix partial outputs from different attempts.
@@ -140,3 +142,32 @@ minute-level pipeline was not rerun for this reporting-only extension.
 The `reporting` stage also runs `R/run_reporting_diagnostics.R` after the S32–S36 exports. It writes Table S37 source values to `reporting_diagnostics/schoenfeld.csv`, `step_time.csv` and `support.csv`, together with 18 local diagnostic plots. To add diagnostics to an existing completed reporting run, use `Rscript R/run_reporting_diagnostics.R /path/to/work`. The output directory must not already exist; a completion marker is written only after all 18 models pass numerical checks. After successful diagnostics, `export_reporting_diagnostics.py` automatically writes `displays/table_s37.csv`, `reporting_diagnostic_tables.json` and `reporting_diagnostic_table_notes.json`. For an existing completed diagnostic run, use `python export_reporting_diagnostics.py --work-dir /path/to/work`; existing S37 exports are never overwritten. No Word file or local audit folder is required. These diagnostics do not replace the original models or establish proportionality.
 
 Run the boundary/event/person-time regression check with `Rscript tests/test_reporting_time_split.R` in the same R environment.
+
+## Additional exploratory age comparison (Table S40)
+
+For a completed model run, execute:
+
+```sh
+python run_analysis.py age-comparison --data-dir /your/local/data --work-dir /your/local/completed-work
+```
+
+This stage is also the final step of `all`. It requires `models/revision_cohort.csv.gz`
+and `models/age_results.csv`, reproduces the original period-specific age-80
+contrasts, then fits the three fully period-interacted age models. It preserves
+original scores, uses survey domain subsetting, and checks the interaction
+coefficients and covariance against separate period fits. Outputs are in
+`work/age_comparison/`. A completion marker is written only after all checks pass.
+The output directory must not exist; interrupted attempts must be inspected and
+archived before restarting. No new dependencies are required.
+
+`export_age_comparison.py --work-dir /your/local/completed-work` can export a
+completed fit without refitting. It writes `displays/table_s40_a.csv`,
+`table_s40_b.csv`, and `age_comparison_tables.json` (panels, title and explanatory
+note). It rejects missing/duplicate model rows, invalid uncertainty values,
+inconsistent direct contrasts and existing exports. All three inference conventions
+are exported. Unit tests use synthetic values, not participant records.
+
+Table S40 compares age-related changes relative to age 50; it does not compare
+absolute predicted outcome levels, estimate an isolated device effect, or replace
+Figure 2/Table 4. These additional tests are post hoc and exploratory, without
+multiplicity correction. Never upload `age_comparison/models.rds` or any work folder.

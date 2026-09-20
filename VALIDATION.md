@@ -184,3 +184,26 @@ All 45 Python unit tests passed in the documented Python 3.9.6 project environme
 Publication labels now use “HR ratio” for exponentiated coefficient differences; legacy model-output lookup keys are retained. PAXDAY documentation references now use their 2020 publication year. The updated main, supplement and no-transport exporters were executed against the retained validated model results. Cell-by-cell comparisons found 115 changed cells, exclusively the approved labels and one codebook-reference cell. No numerical result changed. All 45 tables in the revised manuscript and supplement matched their corresponding generated or retained reporting/checklist tables. This check did not refit models or repeat raw-minute reconstruction.
 
 The accompanying methods documentation distinguishes relative ranks from measurement equivalence and paired baseline assessments from identical observation periods. These changes clarify interpretation; they do not validate the operational activity score or resolve the previously reported study limitations.
+
+## Additional age-comparison integration (20 September 2026)
+
+The new `age-comparison` CLI stage was executed with the recorded Python 3.9.6
+and isolated R library, after verifying all 34 source hashes. It used a byte-copy
+of previously validated model inputs; minute-level raw-data processing was not
+repeated for this additive stage. No dependency or previous analysis changed.
+
+All seven result CSVs reproduce the pre-integration additional analysis with zero
+numerical difference: baseline contrasts (2 rows), coefficients (72), age contrasts
+(27), curves (540), joint tests (9), domain support (6), and independent coefficient/
+covariance checks (3). Both S40 panels match all cells in the current supplement.
+The original period-specific age-80 estimates and sample sizes are checked before
+fitting. Independent period fits reproduce the combined interaction coefficients
+and covariance within 1e−10. The two-df test is also checked against `regTermTest`.
+
+The Python suite passes 55 synthetic tests, including ten new S40 export tests.
+Seven existing R test scripts pass. A repeated R-stage invocation fails explicitly
+without changing existing output hashes. A separate display replay reproduces
+both table panels and includes the explanatory note. These checks establish
+computational agreement, not validation of every scientific assumption. The new
+stage is wired into `all`; the entire minute-level `all` pipeline was not rerun
+for this extension. No participant-level files or fitted objects are included.

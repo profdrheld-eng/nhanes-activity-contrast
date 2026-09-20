@@ -97,3 +97,17 @@ participant-level verification file and must never be published.
 - All five formatted tables and notes: `export_reporting.py`, displays/reporting_tables.json and reporting_table_notes.json.
 
 | Table S37 | `R/run_reporting_diagnostics.R` + `export_reporting_diagnostics.py` | `displays/table_s37.csv`, `reporting_diagnostic_tables.json`; source: `reporting_diagnostics/{schoenfeld,step_time,support}.csv` | all 18 S36 models; conventional and full-survey tests kept distinct |
+
+## Table S40: additional exploratory age comparison
+
+Producer: `R/run_age_comparison.R`, orchestrated by `run_analysis.py age-comparison`.
+Inputs: the pipeline-generated `models/revision_cohort.csv.gz` and `age_results.csv`.
+Machine-readable outputs: `age_comparison/joint_tests.csv`, `contrasts.csv`,
+`support.csv`, `curves.csv`, `coefficients.csv`, `verification.csv`,
+`baseline_reproduction.csv`, and `session_info.txt`.
+Display producer: `export_age_comparison.py`; outputs `displays/table_s40_a.csv`,
+`table_s40_b.csv`, and `age_comparison_tables.json`. Panel A has three model rows;
+Panel B has nine rows (three domains by three inference conventions). Full precision
+is retained in source CSVs, while displayed coefficients/intervals use three decimals.
+These exports support the additional age statements in Methods, Results and
+Discussion; they do not replace original Figure 2 or Table 4.

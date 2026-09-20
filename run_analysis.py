@@ -17,7 +17,7 @@ from nhanes_activity.environment import analysis_packages
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('stage',choices=['all','verify-sources','process-hip','build-cohort','prepare-models','fit-models','export-displays','reporting'])
+    parser.add_argument('stage',choices=['all','verify-sources','process-hip','build-cohort','prepare-models','fit-models','export-displays','reporting','age-comparison'])
     parser.add_argument('--data-dir',type=Path,required=True)
     parser.add_argument('--work-dir',type=Path)
     parser.add_argument('--cycle',choices=['2003-2004','2005-2006','2011-2012','2013-2014'])
@@ -25,7 +25,7 @@ def main():
     args = parser.parse_args()
     packages = analysis_packages() if args.stage != 'verify-sources' else None
     root = Path(__file__).resolve().parent
-    if args.stage in ['all','prepare-models','fit-models','export-displays','reporting'] and args.cycle:
+    if args.stage in ['all','prepare-models','fit-models','export-displays','reporting','age-comparison'] and args.cycle:
         parser.error('Model stages require all four cycles; omit --cycle')
     if args.stage=='process-hip' and args.cycle in ['2011-2012','2013-2014']:
         parser.error('process-hip requires a hip cycle')
@@ -51,12 +51,12 @@ def main():
     if args.stage=='all':
         if work.exists():
             parser.error('The all stage requires a new, nonexistent work directory')
-        for stage in ['process-hip','build-cohort','prepare-models','fit-models','export-displays','reporting']:
+        for stage in ['process-hip','build-cohort','prepare-models','fit-models','export-displays','reporting','age-comparison']:
             subprocess.run([sys.executable,str(root/'run_analysis.py'),stage,
                             '--data-dir',str(data),'--work-dir',str(work),
                             '--chunksize',str(args.chunksize)],check=True)
         (work/'pipeline_complete.json').write_text(json.dumps({
-            'status':'complete','stages':['process-hip','build-cohort','prepare-models','fit-models','export-displays','reporting']},indent=2)+'\n')
+            'status':'complete','stages':['process-hip','build-cohort','prepare-models','fit-models','export-displays','reporting','age-comparison']},indent=2)+'\n')
         return
     work.mkdir(parents=True,exist_ok=True)
     if args.stage=='prepare-models':
@@ -85,6 +85,13 @@ def main():
             subprocess.run([rscript,str(root/'R'/stage),str(work)],check=True)
         for exporter in ['export_main_tables.py','export_supplement_tables.py','export_no_transport.py']:
             subprocess.run([sys.executable,str(root/exporter),'--work-dir',str(work)],check=True)
+        return
+    if args.stage=='age-comparison':
+        rscript=shutil.which('Rscript')
+        if rscript is None:
+            parser.error('Rscript must be installed and available on PATH')
+        subprocess.run([rscript,str(root/'R/run_age_comparison.R'),str(work)],check=True)
+        subprocess.run([sys.executable,str(root/'export_age_comparison.py'),'--work-dir',str(work)],check=True)
         return
     if args.stage=='reporting':
         rscript=shutil.which('Rscript')

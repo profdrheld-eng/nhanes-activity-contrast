@@ -216,3 +216,31 @@ These focused step tests retain constant nuisance slopes and cannot exclude othe
 Publication tables label exponentiated coefficient differences as ratios of hazard ratios (HR ratios). Legacy strings such as `Female/Male slope ratio` and `Wrist/Hip slope ratio` remain internal CSV lookup keys for reproducibility; they never denote a quotient of log-hazard coefficients. Exporters translate these keys to the publication labels without changing values. The NCHS PAXDAY_G and PAXDAY_H codebooks were first published in November 2020; 2011–2012 and 2013–2014 identify the survey cycles.
 
 Rank transformations define relative scales; they do not by themselves establish measurement equivalence, improve every aspect of robustness, or add information beyond the paired activity measures. The measurements were paired at baseline but did not cover identical observation periods. Between-period comparisons combine changes in instruments, processing, population and follow-up, and cannot identify a single cause of the observed difference.
+
+## Additional exploratory age-by-period comparison (S40)
+
+The primary additional domain retains the historical period-specific age-analysis
+eligibility and restricts ages to 20–79, avoiding different public-use upper-age
+coding. Sensitivities (i) apply the same BMI and combined diabetes/CVD/cancer
+completeness rule to both periods at ages 20–79 and (ii) apply this harmonized rule
+with age capped at 80 in both periods. A positive disease component is sufficient
+for positive composite status; a negative composite requires all components negative.
+Original cycle-specific contrast and common-component scores are retained.
+
+Gaussian survey regression uses (age−50)/10, its square, common activity component,
+sex, race/ethnicity, education, PIR and cycle intercepts. Both age terms and all
+nuisance coefficients may differ by period; cycle intercepts absorb the period
+intercept difference. Two interaction coefficients are jointly tested. The design
+is constructed before subsetting, using cycle-specific strata/PSUs and half the
+two-year examination weights. The primary Wald F/t convention uses 62 survey
+design degrees of freedom. Residual-df (39) and asymptotic alternatives are also
+exported, not selected according to significance. Age-75 versus age-50 contrasts
+are calculated within period and directly differenced (wrist minus hip), with
+pointwise 95% intervals. The asymptotic joint statistic is chi-square=2×F, df=2.
+
+The fully interacted model is independently checked against separate period fits
+for both age coefficients and covariance (absolute tolerance 1e−10). The original
+age-80 contrasts and sample sizes must reproduce before new tests are run. Tests
+are post hoc and unadjusted for multiplicity. Cross-sectional period differences
+cannot isolate device placement or estimate within-person aging. Original Figure 2
+and Table 4 retain their full historical age domains and age-80 interpretation.
