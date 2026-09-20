@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this analysis code, please cite this software release."
+type: software
+title: "NHANES activity-contrast analyses"
+authors:
+  - family-names: "Held"
+    given-names: "Steffen"
+version: 1.0.0
+date-released: 2026-09-20
+license: MIT
+repository-code: "https://github.com/profdrheld-eng/nhanes-activity-contrast"
+url: "https://github.com/profdrheld-eng/nhanes-activity-contrast/releases/tag/v1.0.0"
+abstract: >-
+  Reproducible analysis code for the NHANES 2003–2006 hip and 2011–2014
+  wrist measurement-period comparisons of self-reported and device-measured
+  physical activity, mortality associations, and exploratory age relationships.
+  Participant-level data and fitted model objects are not distributed.
+keywords:
+  - NHANES
+  - physical activity
+  - accelerometry
+  - reproducibility

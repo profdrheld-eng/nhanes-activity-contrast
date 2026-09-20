@@ -1,7 +1,7 @@
 # NHANES activity-contrast analyses
 
-Code-only release candidate for the current manuscript's 2003–2006 hip and
-2011–2014 wrist analyses. The second critical review and the authorized post-hoc transport sensitivity are documented in VALIDATION.md. Prepared for the private repository `profdrheld-eng/nhanes-activity-contrast`; public release is pending.
+Version 1.0.0 of the code-only release for the current manuscript's 2003–2006 hip and
+2011–2014 wrist analyses. The second critical review and the authorized post-hoc transport sensitivity are documented in VALIDATION.md. The paper-specific version is [v1.0.0](https://github.com/profdrheld-eng/nhanes-activity-contrast/releases/tag/v1.0.0).
 Participant-level data must be obtained separately from official NHANES/NCHS
 sources and are not included in this package.
 
@@ -128,7 +128,9 @@ and uncertainty not propagated through the complete scoring/weighting pipeline.
 Historical serialization choices are explicitly retained where required to
 reproduce earlier reported sensitivities; current analyses retain full precision.
 
-The repository is prepared for private hosting under `profdrheld-eng/nhanes-activity-contrast`. Public visibility requires a separate author decision. The code license has not yet been selected; no open-source license is granted by this package. Before public release, select a license, review the complete tracked history, and record the exact paper-specific commit or release in the manuscript.
+The original code and accompanying repository documentation are available under the [MIT License](LICENSE). Third-party dependencies retain their own licenses; this license does not relicense NHANES/NCHS source data or the associated manuscript. The repository distributes no third-party package source or participant-level data.
+
+Please cite the software using [CITATION.cff](CITATION.cff), which identifies Steffen Held as the analysis-code author. This software citation is separate from the associated manuscript's authorship (Martin Lange and Steffen Held). A paper DOI will be added when available; no DOI or publication status is implied by this software release. The paper-specific code version is `v1.0.0`. Subsequent corrections will receive a new version and an explicit change description.
 
 STROBE and RECORD checklists (Tables S38–S39) belong to the journal Supplementary File and are not separate code outputs or repository attachments.
 

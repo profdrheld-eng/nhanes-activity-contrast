@@ -1,6 +1,40 @@
 # Validation scope and evidence
 
-Release preparation date: 2026-09-18. The second critical review corrected a density-coordinate error and added the author-approved post-hoc transport sensitivity. Historical clean-Python raw replay and model/export integration passed, but reproduction alone did not detect the Figure 1 coordinate error described below. All reconstruction and cross-checks described below were performed within the study project; they do not constitute external validation. This is an internal reproducibility audit,
+## Version 1.0.0 release check (20 September 2026)
+
+The complete `all` pipeline was rerun from the 34 manifest-verified public raw
+files in a new work directory, using the documented clean Python 3.9.6 and
+isolated R 4.6.0 environments. All seven stages completed: hip-minute processing,
+cohort construction, model preparation, model fitting, displays, reporting and
+the additional age comparison. This supersedes the earlier staged-replay limits
+for the current code version; the dated records below remain as audit history.
+
+The newly generated outputs matched all 45 computational table blocks
+in the working manuscript and supplement, including both Table S40 panels.
+S38/S39 are editorial reporting checklists and were checked separately rather
+than presented as generated statistical results. Forty-four selected original
+main-text numerical assertions and the added age-comparison result paragraph
+also matched the new exports. Regressions against the preceding validated stage
+outputs passed for 59 CSV files (567 column comparisons;
+continuous values: absolute and relative tolerance 1e-8; integer-valued and
+categorical values: exact). All six figure PNGs were byte-identical to the
+previously reviewed corrected figures. The analysis source hashes were unchanged
+throughout this final run. All 55 Python synthetic tests and seven R test scripts
+passed. These are internal computational checks, not external validation.
+
+The release package uses an explicit allowlist of 76 code, configuration,
+documentation and synthetic-test files. It excludes participant-level files,
+fitted objects, manuscripts, review comments and local audit paths. A review of
+the existing six-commit history found no participant-data files, private paths
+or matches to the tested credential patterns; this is not a formal security
+audit. Historical documentation remains visible in Git history.
+
+Original code and repository documentation are released under MIT with software
+citation metadata in CITATION.cff. Version `v1.0.0` identifies the code used for
+the paper. Later changes require a new version. The earlier private-hosting and
+undecided-license notes below describe the development stage, not this release.
+
+Historical release preparation (18 September 2026). The second critical review corrected a density-coordinate error and added the author-approved post-hoc transport sensitivity. Historical clean-Python raw replay and model/export integration passed, but reproduction alone did not detect the Figure 1 coordinate error described below. All reconstruction and cross-checks described below were performed within the study project; they do not constitute external validation. This is an internal reproducibility audit,
 not external peer review or a guarantee of statistical correctness.
 
 ## Input and processing checks
